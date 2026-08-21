@@ -48,7 +48,7 @@ javac --version
 ## Week 1 — Core Foundations
 
 - [x] Install the JDK and configure VS Code.
-- [ ] Learn Java program structure and output.
+- [x] Learn Java program structure and output.
 - [ ] Learn variables and data types.
 - [ ] Practice operators and type conversion.
 - [ ] Accept user input with `Scanner`.
