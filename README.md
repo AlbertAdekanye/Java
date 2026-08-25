@@ -50,8 +50,8 @@ javac --version
 - [x] Install the JDK and configure VS Code.
 - [x] Learn Java program structure and output.
 - [x] Learn variables and data types.
-- [ ] Practice operators and type conversion.
-- [ ] Accept user input with `Scanner`.
+- [x] Practice operators and type conversion.
+- [x] Accept user input with `Scanner`.
 - [ ] Learn `if`, `else`, and `switch`.
 - [ ] Practice `for`, `while`, and `do-while` loops.
 - [ ] Learn methods, arrays, and strings.
