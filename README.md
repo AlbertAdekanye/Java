@@ -53,7 +53,7 @@ javac --version
 - [x] Practice operators and type conversion.
 - [x] Accept user input with `Scanner`.
 - [x] Learn `if`, `else`, and `switch`.
-- [ ] Practice `for`, `while`, and `do-while` loops.
+- [x] Practice `for`, `while`, and `do-while` loops.
 - [ ] Learn methods, arrays, and strings.
 - [ ] Build a console calculator with input validation.
 
