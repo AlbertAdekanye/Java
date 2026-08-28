@@ -54,7 +54,7 @@ javac --version
 - [x] Accept user input with `Scanner`.
 - [x] Learn `if`, `else`, and `switch`.
 - [x] Practice `for`, `while`, and `do-while` loops.
-- [ ] Learn methods, arrays, and strings.
+- [x] Learn methods, arrays, and strings.
 - [ ] Build a console calculator with input validation.
 
 ## Week 2 — Object-Oriented Programming
