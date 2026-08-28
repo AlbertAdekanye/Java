@@ -21,17 +21,26 @@ public class PasswordAttempts {
 
             attempts++;
 
-            // Compare the entered password with CORRECT_PASSWORD
+            if (password.equals(CORRECT_PASSWORD)) {
+                System.out.println("Access granted.");
 
-            // If it is correct:
-            // 1. Print "Access granted."
-            // 2. Set accessGranted to true
-            // 3. Exit the loop using break
+                accessGranted = true;
+                break;
+            } else {
+                int attemptsRemaining = MAX_ATTEMPTS - attempts;
 
-            // Otherwise, show how many attempts remain
+                if (attemptsRemaining > 0) {
+                    System.out.println("Incorrect password.");
+                    System.out.println(
+                            attemptsRemaining + " attempt(s) remaining."
+                    );
+                }
+            }
         }
 
-        // If access was not granted, print "Account locked."
+        if (!accessGranted) {
+            System.out.println("Account locked.");
+        }
 
         scanner.close();
     }
