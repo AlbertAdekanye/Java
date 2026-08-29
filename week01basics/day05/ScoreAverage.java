@@ -6,6 +6,7 @@ public class ScoreAverage {
     int[] scores = {75, 82, 68, 84};
 
     int total = 0;
+    
 
     for (int score : scores) {
       total += score;
