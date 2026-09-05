@@ -13,6 +13,7 @@ public class NumberMethods {
     public static boolean isEven(int number) {
         return number % 2 == 0;
     }
+    
 
     // Return the number multiplied by itself
     public static int square(int number) {
@@ -31,3 +32,4 @@ public class NumberMethods {
         }
     }
 }
+
