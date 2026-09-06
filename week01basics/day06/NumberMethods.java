@@ -14,7 +14,6 @@ public class NumberMethods {
         return number % 2 == 0;
     }
     
-
     // Return the number multiplied by itself
     public static int square(int number) {
         return number * number;
@@ -32,4 +31,3 @@ public class NumberMethods {
         }
     }
 }
-
