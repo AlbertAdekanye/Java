@@ -17,6 +17,8 @@ public class NumberMethods {
     // Return the number multiplied by itself
     public static int square(int number) {
         return number * number;
+
+        
     }
 
     // Compare two numbers and return the larger number
