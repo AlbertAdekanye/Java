@@ -9,14 +9,24 @@ public class Main {
         
         Student student1 = new Student();
         
-        Car car = new Car();
+        Car car1 = new Car();
+        Car car2 = new Car();
 
-        car.brand = "BMW";
-        car.model = "IX5";
-        car.year = 2025;
-        car.price = "$60000";
+        car1.brand = "BMW";
+        car1.model = "IX5";
+        car1.year = 2025;
+        car1.price = "$60000";        
+        
+        car2.brand = "benz";
+        car2.model = "G-wagon";
+        car2.year = 2025;
+        car2.price = "$60000";
+        
+        System.out.println("====== BRAND1=========");
+        car1.displayInfo();
 
-        car.displayInfo();
+        System.out.println("========= BRAND2 =========");
+        car2.displayInfo();
 
 
         book1.title = "Clean Code";
