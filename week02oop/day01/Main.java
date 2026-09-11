@@ -45,8 +45,8 @@ public class Main {
         // book2.displayInfo();
         // student1.displayInfo();
 
-        // System.out.println(book2.title);
-        // System.out.println(book2.author);
-        // System.out.println(book2.year);
+        System.out.println(book2.title);
+        System.out.println(book2.author);
+        System.out.println(book2.year);
     }
 }
