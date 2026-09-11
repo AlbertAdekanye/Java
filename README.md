@@ -59,7 +59,7 @@ javac --version
 
 ## Week 2 — Object-Oriented Programming
 
-- [ ] Learn classes, objects, fields, and methods.
+- [x] Learn classes, objects, fields, and methods.
 - [ ] Use constructors and the `this` keyword.
 - [ ] Apply encapsulation and access modifiers.
 - [ ] Understand inheritance and polymorphism.
