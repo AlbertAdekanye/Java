@@ -17,6 +17,8 @@ public class Main {
         bankAccount.accountName = "Albert Adekanye";
         bankAccount.accountNumber = "02727269";
         bankAccount.balance = 150000;
+        bankAccount.deposit(50000);
+        bankAccount.withdraw(20000);
 
         System.out.println("====== BANK ACCOUNT ======");
         bankAccount.displayAccount();

@@ -16,7 +16,6 @@ public class BankAccount {
         balance -= amount;
 
         System.out.println("Amount Withdrawn: " + amount);
-        
     }
 
     void displayAccount() {
