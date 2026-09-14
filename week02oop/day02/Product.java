@@ -18,6 +18,6 @@ public class Product {
     System.out.println("Product Name: " + name);
     System.out.println("Product Price: " + price);
     System.out.println("Product Category: " + category);
-    System.out.println("Price Quantity: " + quantity);
+    System.out.println("Product Quantity: " + quantity);
   }
 }
