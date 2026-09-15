@@ -61,7 +61,7 @@ javac --version
 
 - [x] Learn classes, objects, fields, and methods.
 - [x] Use constructors and the `this` keyword.
-- [ ] Apply encapsulation and access modifiers.
+- [x] Apply encapsulation and access modifiers.
 - [ ] Understand inheritance and polymorphism.
 - [ ] Work with abstract classes and interfaces.
 - [ ] Prefer composition where appropriate.
