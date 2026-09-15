@@ -3,7 +3,7 @@ package week02oop.day03;
 public class Product {
   
   private String name;
-  double price;
+  private double price;
   private String category;
   private int quantity;
 
@@ -38,7 +38,7 @@ public class Product {
 
   public void setPrice(double price) {
     if (price > 0) {
-
+      this.price = price;
     }
   }
 
@@ -48,7 +48,7 @@ public class Product {
 
   public void setQuantity(int quantity) {
     if (quantity >= 0 ) {
-
+      this.quantity = quantity;
     }
   }
 
