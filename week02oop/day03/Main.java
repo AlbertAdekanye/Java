@@ -49,5 +49,16 @@ public class Main {
         item.setPrice(-500);
         item.setQuantity(-10);
         item.displayProduct();
+
+        // STUDENT
+        Student profile = new Student(
+            "Albert Adekanye", 
+            24, 
+            "Physics"
+        );
+
+        System.out.println();
+
+        profile.displayStudent();
     }
 }
