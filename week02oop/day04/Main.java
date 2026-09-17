@@ -44,13 +44,15 @@ public class Main {
     pet2.age = 2;
 
     System.out.println();
-      
+
+    pet1.displayPetInfo();
     pet1.eat();
     pet1.sleep();
     pet1.bark();
-      
+    
     System.out.println();
-      
+    
+    pet2.displayPetInfo();
     pet2.eat();
     pet2.sleep();
     pet2.meow();

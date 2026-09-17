@@ -14,7 +14,7 @@ public class Animal {
   }
 
   void displayPetInfo() {
-    System.out.println(name );
-    System.out.println(age );
+    System.out.println("Dog name is " + name );
+    System.out.println("Dog age is " + age );
   }
 }
