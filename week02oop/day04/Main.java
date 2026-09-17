@@ -1,5 +1,7 @@
 package week02oop.day04;
 
+import week02oop.day05.Payment;
+
 public class Main {
 
   public static void main(String[] args) {
@@ -56,6 +58,7 @@ public class Main {
     pet2.eat();
     pet2.sleep();
     pet2.meow();
+
 
   }
 }

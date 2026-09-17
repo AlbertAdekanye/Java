@@ -4,13 +4,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Dog dog = new Dog();
-        dog.name = "Chase";
+        Animal animal1 = new Dog();
+        Animal animal2 = new Cat();
+        Animal animal3 = new Bird();
 
-        Cat cat = new Cat();
-        cat.name = "Bub";
+        animal1.name = "Chase";
+        animal2.name = "Bob";
+        animal3.name = "Eagle";
 
-        dog.makeSound();
-        cat.makeSound();
+        animal1.makeSound();
+        animal2.makeSound();
+        animal3.makeSound();
+
+        // banking system polymorphism
+        System.out.println();
+
+        Payment payment1 = new CardPayment();
+        Payment payment2 = new BankTransfer();
+
+        payment1.processPayment();
+        payment2.processPayment();
     }
 }
