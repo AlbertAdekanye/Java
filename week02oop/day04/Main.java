@@ -1,7 +1,4 @@
 package week02oop.day04;
-
-import week02oop.day05.Payment;
-
 public class Main {
 
   public static void main(String[] args) {
