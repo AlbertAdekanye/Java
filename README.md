@@ -64,7 +64,7 @@ javac --version
 - [x] Apply encapsulation and access modifiers.
 - [x] Understand inheritance and polymorphism.
 - [x] Work with abstract classes and interfaces.
-- [ ] Prefer composition where appropriate.
+- [x] Prefer composition where appropriate.
 - [ ] Organize code using packages.
 - [ ] Build a library management system.
 
