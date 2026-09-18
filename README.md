@@ -65,8 +65,8 @@ javac --version
 - [x] Understand inheritance and polymorphism.
 - [x] Work with abstract classes and interfaces.
 - [x] Prefer composition where appropriate.
-- [ ] Organize code using packages.
-- [ ] Build a library management system.
+- [x] Organize code using packages.
+- [x] Build a library management system.
 
 ## Week 3 — Collections and Error Handling
 

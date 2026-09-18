@@ -22,8 +22,31 @@ public class Library {
   }
 
   public void displayMembers() {
-    for (Member members : members) {
-      members.displayMembers();
+
+      System.out.println("===== LIBRARY MEMBERS =====");
+
+      for (Member member : members) {
+          member.displayMember();
+      }
+  }
+
+  public void searchBook(String title) {
+    for (Book book : books) {
+      if (book.getTitle().equalsIgnoreCase(title)) {
+        book.displayBook();
+      }
     }
+  }
+
+ public void borrowBook(String title) {
+    for (Book book : books) {
+
+        if (book.getTitle().equalsIgnoreCase(title)) {
+            book.borrowBook();
+            return;
+        }
+    }
+
+    System.out.println("Book not found.");
   }
 }

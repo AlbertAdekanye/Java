@@ -19,10 +19,16 @@ public class Main {
             "Kathy Sierra"
         );
 
+        Book book4 = new Book(
+          "The Complete Reference", 
+          "Herbert Schildt"
+        );
+
         Book[] books = {
             book1,
             book2,
-            book3
+            book3,
+            book4
         };
 
         Member member1 = new Member(
@@ -35,9 +41,15 @@ public class Main {
             102
         );
 
+        Member member3 = new Member(
+          "Adesoye", 
+          007
+        );
+
         Member[] members = {
             member1,
-            member2
+            member2,
+            member3
         };
 
         Library library = new Library(
@@ -54,7 +66,11 @@ public class Main {
 
         System.out.println();
 
-        book1.borrowBook();
+        library.borrowBook("Clean Code");
+        library.borrowBook("Clean Code");
+
+        library.borrowBook("Effective Java");
+        library.borrowBook("Effective Java");
 
         System.out.println();
 
@@ -63,5 +79,12 @@ public class Main {
         System.out.println();
 
         book1.returnBook();
+
+        System.out.println();
+
+        System.out.println("===== SEARCH RESULT =====");
+        library.searchBook("Clean Code");
+        library.searchBook("Java: The Complete Reference");
+        library.searchBook("Something That Does Not Exist");
     }
 }

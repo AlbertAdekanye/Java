@@ -26,7 +26,7 @@ public class Book {
 
     public void borrowBook() {
         if (available) {
-            available = false;
+            available = true;
             System.out.println(title + " has been borrowed.");
         } else {
             System.out.println(title + " is not available.");

@@ -1,27 +1,27 @@
 package week02oop.day07;
 
 public class Member {
-  
-  private String name;
-  private int memberId;
 
-  public Member(String name, int memberId) {
-    this.name = name;
-    this.memberId = memberId;
-  }
+    private String name;
+    private int memberId;
 
-  public String getName() {
-    return name;
-  }
+    public Member(String name, int memberId) {
+        this.name = name;
+        this.memberId = memberId;
+    }
 
-  public int getMemberId() {
-    return memberId;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void displayMembers() {
-    System.out.println(
-      "Member ID: " + memberId + 
-      " | Name: " + name
-    );
-  }
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public void displayMember() {
+        System.out.println(
+            "Member ID: " + memberId +
+            " | Name: " + name
+        );
+    }
 }
