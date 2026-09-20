@@ -19,6 +19,6 @@ public class Book {
   }
 
   public void displayBook() {
-    System.out.println("Title: " + title + "| Author: " + author);
+    System.out.println("Title: " + title + " | Author: " + author);
   }
 }
