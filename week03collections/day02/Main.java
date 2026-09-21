@@ -10,6 +10,8 @@ public class Main {
 
     HashSet<Integer> numbers = new HashSet<>();
 
+    HashSet<String> languages = new HashSet<>();
+
     names.add("Albert");
     names.add("Adesoye");
     names.add("Adekanye");
@@ -36,7 +38,9 @@ public class Main {
     }
 
     System.out.println();
+
     // HashSet with numbers
+    System.out.println("========== NUMBERS ===========");
     numbers.add(24);
     numbers.add(24);
     numbers.add(23);
@@ -45,5 +49,28 @@ public class Main {
     numbers.add(20);
 
     System.out.println(numbers);
+
+    System.out.println();
+    
+    // Languages`
+    languages.add("Java");
+    languages.add("C");
+    languages.add("C++");
+    languages.add("Python");
+    languages.add("JavaScript");
+    
+    // print languages
+    System.out.println("Languages: " + languages);
+
+    System.out.println();
+
+    // print number of languages
+    System.out.println("Number of Languages: " + languages.size());
+
+    System.out.println();
+
+    if (languages.contains("Java")) {
+      System.out.println("Java Exist");
+    }
   }
 }
