@@ -70,7 +70,7 @@ javac --version
 
 ## Week 3 — Collections and Error Handling
 
-- [ ] Use `ArrayList`, `HashSet`, and `HashMap`.
+- [x] Use `ArrayList`, `HashSet`, and `HashMap`.
 - [ ] Learn iterators and enhanced `for` loops.
 - [ ] Understand generics.
 - [ ] Understand checked and unchecked exceptions.
