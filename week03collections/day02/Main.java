@@ -26,11 +26,15 @@ public class Main {
     System.out.println(names.size());
 
     if (names.contains("Adekanye")) {
-      System.out.println("Present");
-    } if (names.contains("Albert")) {
-      System.out.println("present");
+      System.out.println("Adekanye is present");
     } else {
-      System.out.println("Absent");
+      System.out.println("Adekanye is absent");
+    }
+
+    if (names.contains("Albert")) {
+      System.out.println("Albert is present");
+    } else {
+      System.out.println("Albert is absent");
     }
 
     if (names.isEmpty()) {
@@ -58,6 +62,8 @@ public class Main {
     languages.add("C++");
     languages.add("Python");
     languages.add("JavaScript");
+    languages.add("Go");
+    languages.add("Java");
     
     // print languages
     System.out.println("Languages: " + languages);
@@ -69,8 +75,26 @@ public class Main {
 
     System.out.println();
 
+    // check if a language exits 
     if (languages.contains("Java")) {
       System.out.println("Java Exist");
     }
+
+    if (languages.contains("RUST")) {
+      System.out.println("RUST exist");
+    } else {
+      System.out.println("RUST doesn't exit");
+    }
+
+    // check if the language is empty
+    if (languages.isEmpty()) {
+      System.out.println("");
+    }
+
+    System.out.println();
+
+    languages.remove("Python");
+
+    System.out.println(languages);
   }
 }
