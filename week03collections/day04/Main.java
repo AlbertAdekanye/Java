@@ -34,5 +34,11 @@ public class Main {
                 entry.getKey() + " -> " + entry.getValue()
             );
         }
+
+        System.out.println(); 
+        
+        for (Integer id : students.keySet()) {
+            System.out.println(id);
+        }
     }
 }
