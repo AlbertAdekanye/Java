@@ -1,12 +1,15 @@
 package week03collections.day04;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
 
         ArrayList<String> names = new ArrayList<>();
+
+        HashMap<Integer, String> students = new HashMap<>();
 
         names.add("Albert");
         names.add("Adesoye");
@@ -14,9 +17,22 @@ public class Main {
         names.add("David");
         names.add("King");
 
-        for (int i = 0; i < names.size(); i++) {
-            System.out.println(names.get(i));
+        for (String name : names) {
+            System.out.println(name);
         }
 
+        System.out.println();
+
+        students.put(101, "Albert");
+        students.put(102, "King");
+        students.put(103, "Vickie");
+        students.put(104, "John");
+
+        for (Map.Entry<Integer, String> entry : students.entrySet()) {
+
+            System.out.println(
+                entry.getKey() + " -> " + entry.getValue()
+            );
+        }
     }
 }
