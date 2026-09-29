@@ -40,5 +40,11 @@ public class Main {
         for (Integer id : students.keySet()) {
             System.out.println(id);
         }
+
+        System.out.println();
+        
+        for (String name : students.values()) {
+            System.out.println(name);   
+        }
     }
 }
