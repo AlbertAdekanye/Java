@@ -48,5 +48,14 @@ public class Main {
         for (String name : students.values()) {
             System.out.println(name);   
         }
+
+        System.out.println();
+        
+        // iterating with conditions IF
+        for (String name : names) {
+            if (name.startsWith("A")) {
+                System.out.println(name);
+            }
+        }
     }
 }
