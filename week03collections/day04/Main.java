@@ -37,12 +37,14 @@ public class Main {
 
         System.out.println(); 
         
+        // print key
         for (Integer id : students.keySet()) {
             System.out.println(id);
         }
 
         System.out.println();
         
+        // print value
         for (String name : students.values()) {
             System.out.println(name);   
         }
