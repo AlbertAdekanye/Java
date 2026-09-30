@@ -71,7 +71,7 @@ javac --version
 ## Week 3 — Collections and Error Handling
 
 - [x] Use `ArrayList`, `HashSet`, and `HashMap`.
-- [ ] Learn iterators and enhanced `for` loops.
+- [x] Learn iterators and enhanced `for` loops.
 - [ ] Understand generics.
 - [ ] Understand checked and unchecked exceptions.
 - [ ] Practice `try`, `catch`, `finally`, and `throw`.
