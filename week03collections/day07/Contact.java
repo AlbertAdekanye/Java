@@ -24,12 +24,11 @@ public class Contact {
     return email;
   }
 
-  public void displayContact(){ 
+  public void displayContact() {
     System.out.println(
-      "Name: " + name + 
-      " | phone: " + 
-      " | Email: " + email
+      "name: " + name + 
+      " | phone: " + phoneNumber + 
+      " | email: " + email
     );
   }
-
 }

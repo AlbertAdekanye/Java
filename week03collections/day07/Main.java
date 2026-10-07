@@ -1,6 +1,5 @@
 package week03collections.day07;
 
-import java.awt.Choice;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -23,20 +22,6 @@ public class Main {
 
     contacts.add(contact);
     System.out.println("Contact added successfully");
-
-    Contact contact1 = new Contact(
-      "Albert", 
-      "09076542345", 
-      "Albert@example.com"
-    );
-    Contact contact2 = new Contact(
-      "Jae", 
-      "0802345673", 
-      "Jae@example.com"
-    );
-
-    contacts.add(contact1);
-    contacts.add(contact2);
   }
 
   // VIEW CONTACTS
@@ -65,7 +50,7 @@ public class Main {
 
     for (Contact contact : contacts) {
 
-      if (contact.getName().equals(searchName)) {
+      if (contact.getName().equalsIgnoreCase(searchName)) {
         contact.displayContact();
 
         found = true;
@@ -104,13 +89,24 @@ public class Main {
     System.out.println("Contact not found");
   }
 
+  // COUNT CONTACTS
+  public static void countContact(ArrayList<Contact> contacts) {
+    
+    if (contacts.isEmpty()) {
+      System.out.println("Add contact");
+      return;
+    }
+
+    System.out.println("Total Contacts are: " + contacts.size());
+  }
+
   public static void main(String[] args) {
       
     ArrayList<Contact> contacts = new ArrayList<>();
 
     Scanner scanner = new Scanner(System.in);
 
-    int Choice;
+    int choice;
 
     do {
 
@@ -122,14 +118,15 @@ public class Main {
       System.out.println("3. Search Contact");
       System.out.println("4. Delete Contact");
       System.out.println("5. Exit");
+      System.out.println("6. Count Contacts");
 
       System.out.println("Choose an option.");
 
-      Choice = scanner.nextInt();
+      choice = scanner.nextInt();
 
       scanner.nextLine();
 
-      switch (Choice) {
+      switch (choice) {
 
         case 1: 
           addContact(
@@ -144,22 +141,25 @@ public class Main {
 
         case 3: 
           searchContact(contacts, scanner);
-          return;
+          break;
 
         case 4: 
           deleteContact(contacts, scanner);
-          return;
+          break;
 
         case 5: 
           System.out.println("Goodbye!");
+          break;
+        case 6: 
+          countContact(contacts);
           break;
 
         default: 
           System.out.println("Invalid option.");
         
       }
-    } while (Choice != 5);
-
+    } while (choice != 5);
+    
     scanner.close();
   }
 }
