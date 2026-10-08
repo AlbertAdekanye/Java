@@ -1,0 +1,5 @@
+Name: Albert Adekanye
+Profession: Software Developer
+Background: Physics
+Language: Java
+Goal: Backend Development
