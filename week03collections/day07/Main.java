@@ -7,28 +7,37 @@ import java.util.Scanner;
 public class Main {
   
 //  ADD CONTACTS
-  public static void addContact(ArrayList<Contact> contacts, Scanner scanner) {
-    
-    System.out.println("Enter name: ");
+  public static void addContact(
+    ArrayList<Contact> contacts, 
+    Scanner scanner
+  ) {
+
+    System.out.println("Enter Contact Name: ");
     String name = scanner.nextLine();
 
-    System.out.println("Enter phone number: ");
+    System.out.println("Enter Phone Number: ");
     String phone = scanner.nextLine();
 
-    System.out.println("Enter email: ");
+    System.out.println("Enter Email: ");
     String email = scanner.nextLine();
 
-    Contact contact = new Contact(name, phone, email);
+    Contact contact = new Contact(
+      name, 
+      phone, 
+      email
+    );
 
     contacts.add(contact);
     System.out.println("Contact added successfully");
   }
 
   // VIEW CONTACTS
-  public static void viewContacts(ArrayList<Contact> contacts) {
+  public static void viewContacts(
+    ArrayList<Contact> contacts
+  ) {
 
     if (contacts.isEmpty()) {
-      System.out.println("No contacts found");
+      System.out.println("No contacts found.");
 
       return;
     }
@@ -41,7 +50,10 @@ public class Main {
   }
 
   // SEARCH CONTACTS
-  public static void searchContact(ArrayList<Contact> contacts, Scanner scanner) {
+  public static void searchContact(
+    ArrayList<Contact> contacts, 
+    Scanner scanner
+  ) {
 
     System.out.println("Enter contact name: ");
     String searchName = scanner.nextLine();
@@ -50,7 +62,7 @@ public class Main {
 
     for (Contact contact : contacts) {
 
-      if (contact.getName().equalsIgnoreCase(searchName)) {
+      if (contact.getName().equalsIgnoreCase(searchName)){
         contact.displayContact();
 
         found = true;
@@ -65,10 +77,12 @@ public class Main {
   }
 
   // DELETE CONTACT
-  public static void deleteContact(ArrayList<Contact> contacts, Scanner scanner) {
+  public static void deleteContact(
+    ArrayList<Contact> contacts, 
+    Scanner scanner
+  ) {
 
     System.out.println("Enter contact name: ");
-
     String name = scanner.nextLine();
 
     Iterator<Contact> iterator = contacts.iterator();
@@ -80,7 +94,7 @@ public class Main {
       if (contact.getName().equalsIgnoreCase(name)) {
         iterator.remove();
 
-        System.out.println("Contact deleted successfully.");
+        System.out.println("Contact deleted successful.");
 
         return;
       }
@@ -90,14 +104,16 @@ public class Main {
   }
 
   // COUNT CONTACTS
-  public static void countContact(ArrayList<Contact> contacts) {
-    
+  public static void countContact(
+    ArrayList<Contact> contacts
+  ) {
+
     if (contacts.isEmpty()) {
-      System.out.println("Add contact");
+      System.out.println("Add Contact");
       return;
     }
 
-    System.out.println("Total Contacts are: " + contacts.size());
+    System.out.println("Total contacts: " + contacts.size());
   }
 
   public static void main(String[] args) {
@@ -114,11 +130,11 @@ public class Main {
       System.out.println("===== CONTACT MANAGER =====");
 
       System.out.println("1. Add Contact");
-      System.out.println("2. View Contact");
+      System.out.println("2. View Contacts");
       System.out.println("3. Search Contact");
       System.out.println("4. Delete Contact");
       System.out.println("5. Exit");
-      System.out.println("6. Count Contacts");
+      System.out.println("6. Count Contact");
 
       System.out.println("Choose an option.");
 
@@ -134,32 +150,39 @@ public class Main {
             scanner
           );
           break;
-
+        
         case 2: 
           viewContacts(contacts);
           break;
 
         case 3: 
-          searchContact(contacts, scanner);
+          searchContact(
+            contacts, 
+            scanner
+          );
           break;
 
         case 4: 
-          deleteContact(contacts, scanner);
+          deleteContact(
+            contacts, 
+            scanner
+          );
           break;
 
         case 5: 
           System.out.println("Goodbye!");
           break;
-        case 6: 
+
+        case 6:
           countContact(contacts);
           break;
 
-        default: 
-          System.out.println("Invalid option.");
-        
+        default:
+          System.out.println("Invalid option");
       }
-    } while (choice != 5);
-    
+
+    } while (choice !=5);
+
     scanner.close();
   }
 }
