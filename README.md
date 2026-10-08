@@ -80,7 +80,7 @@ javac --version
 
 ## Week 4 — Files, Streams, and Testing
 
-- [ ] Read and write text files.
+- [x] Read and write text files.
 - [ ] Read and write CSV data.
 - [ ] Use try-with-resources.
 - [ ] Learn lambda expressions and method references.
