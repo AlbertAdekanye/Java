@@ -103,7 +103,7 @@ public class Main {
     // }
 
     // create directory
-    Path directory = Path.of("data");
+    Path directory = Path.of("data/users/Contact");
 
     try {
       
@@ -127,6 +127,23 @@ public class Main {
 
       System.out.println("Something went wrong");
     } 
+
+    // creating a file inside a directory
+    try {
+      
+      // Path directory = Path.of("data");
+
+      Path file = directory.resolve("contact.txt");
+
+      Files.writeString(file, "Albert Adeknaye");
+
+      System.out.println("");
+
+    } catch (IOException e) {
+      // TODO: handle exception
+
+      System.out.println("something went wrong");
+    }
   }
 
 }
