@@ -7,93 +7,87 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
 public class Main {
-
     public static void main(String[] args) {
-
+        
         // DIRECTORY AND FILE PATHS
         Path directory = Path.of("data");
-        Path studentsFile = directory.resolve("students.txt");
-        Path coursesFile = directory.resolve("courses.txt");
+        Path studentFile = directory.resolve("student.txt");
+        Path courseFile = directory.resolve("courses.txt");
 
         try {
 
-            // TASK 1: CREATE DIRECTORY
+            //TASK 1: CREATE DIRECTORY
             Files.createDirectories(directory);
-            System.out.println("Directory created or already exists.");
+            System.out.println("directory created successfully.");
 
-            // TASK 2 & 3: CREATE AND WRITE STUDENTS FILE
+            // TASK 2: CREATE AND WRITE STUDENTS FILE
             Files.writeString(
-                studentsFile,
-                "101 - Albert\n" +
+                studentFile, 
+                "101 - Albert\n" + 
                 "102 - Adesoye\n" +
                 "103 - John\n" +
                 "104 - David\n" +
                 "105 - Michael\n"
             );
 
-            System.out.println("Students file written successfully.");
+            System.out.println("students file created successfully.");
 
-            // TASK 4: APPEND A STUDENT
+            // TASK 3: APPEND A STUDENT
             Files.writeString(
-                studentsFile,
-                "106 - Emmanuel\n",
+                studentFile, 
+                "Emmanuel\n",
                 StandardOpenOption.APPEND
             );
 
-            System.out.println("Student appended successfully.");
+            System.out.println("Student appended successfully");
 
             // TASK 5: READ STUDENTS FILE
             System.out.println("\n===== STUDENTS =====");
-            String students = Files.readString(studentsFile);
+            String students = Files.readString(studentFile);
             System.out.println(students);
 
-            // TASK 6: CREATE AND WRITE COURSES FILE
+            // TASK 6: CREATE AND WRITE COURSE
             Files.writeString(
-                coursesFile,
-                "Java\n" +
+                courseFile, 
+                "Java\n" + 
                 "JavaScript\n" +
-                "Python\n" +
+                "Python\n" + 
                 "C++\n" +
                 "SQL\n"
             );
 
-            System.out.println("Courses file written successfully.");
+            System.out.println("Course file written successfully");
 
             // READ COURSES FILE
             System.out.println("\n===== COURSES =====");
-            String courses = Files.readString(coursesFile);
+            String courses = Files.readString(courseFile);
             System.out.println(courses);
 
             // TASK 7: CHECK FILE EXISTENCE
             System.out.println("===== FILE EXISTENCE =====");
-            System.out.println(
-                "Students file exists: " + Files.exists(studentsFile)
-            );
-            System.out.println(
-                "Courses file exists: " + Files.exists(coursesFile)
-            );
+            System.out.println("Students file exists: " + Files.exists(studentFile));
+            System.out.println("Courses file exists: " + Files.exists(courseFile));
 
-            // TASK 8: DELETE FILES
+            // Task 8: DELETE FILES
             System.out.println("\n===== DELETE FILES =====");
 
-            if (Files.deleteIfExists(studentsFile)) {
+            if (Files.deleteIfExists(studentFile)) {
                 System.out.println("Students file deleted successfully.");
             } else {
                 System.out.println("Students file did not exist.");
             }
 
-            if (Files.deleteIfExists(coursesFile)) {
+            if (Files.deleteIfExists(courseFile)) {
                 System.out.println("Courses file deleted successfully.");
             } else {
                 System.out.println("Courses file did not exist.");
             }
 
             // CONFIRM DIRECTORY REMAINS
-            System.out.println(
-                "Data directory still exists: " + Files.exists(directory)
-            );
+            System.out.println("Data directory still exists: " + Files.exists(directory));
 
         } catch (IOException e) {
+            // TODO: handle exception
             System.out.println("File operation failed: " + e.getMessage());
         }
     }
