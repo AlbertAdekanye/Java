@@ -81,8 +81,8 @@ javac --version
 ## Week 4 — Files, Streams, and Testing
 
 - [x] Read and write text files.
-- [ ] Read and write CSV data.
-- [ ] Use try-with-resources.
+- [x] Read and write CSV data.
+- [x] Use try-with-resources.
 - [ ] Learn lambda expressions and method references.
 - [ ] Process collections using the Stream API.
 - [ ] Write unit tests with JUnit.
