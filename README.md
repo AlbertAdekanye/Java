@@ -83,8 +83,8 @@ javac --version
 - [x] Read and write text files.
 - [x] Read and write CSV data.
 - [x] Use try-with-resources.
-- [ ] Learn lambda expressions and method references.
-- [ ] Process collections using the Stream API.
+- [x] Learn lambda expressions and method references.
+- [x] Process collections using the Stream API.
 - [ ] Write unit tests with JUnit.
 - [ ] Build an expense tracker with file persistence.
 
