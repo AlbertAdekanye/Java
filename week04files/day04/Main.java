@@ -1,6 +1,9 @@
 package week04files.day04;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Main {
   
@@ -52,5 +55,21 @@ public class Main {
               .reduce(0, Integer::sum);
     
     System.out.println("Total: " + total);
+
+    System.out.println();
+
+    // GROUP ITEMS BY A CONDITION
+    List<String> langs = List.of(
+      "Java",
+      "Go",
+      "Python",
+      "C++",
+      "Ruby"
+    );
+
+    Map<Integer, List<String>> grouped = langs.stream()
+                  .collect(Collectors.groupingBy(String::length)); 
+
+    System.out.println(grouped);
   }
 }
