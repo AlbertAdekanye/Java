@@ -68,8 +68,16 @@ public class Main {
 
         // TASK 5: Calculate the average
         // Hint: mapToInt() and average()
-        System.out.println("===== CALCULATE THE AVERAGE");
+        System.out.println("===== CALCULATE THE AVERAGE =====");
 
+        double average = numbers.stream()
+                .mapToInt(Integer::intValue)
+                .average()
+                .orElse(0.0);
+            
+        System.out.println("Average: " + average);
+
+        System.out.println();
 
         // TASK 6: Group languages by their length
         // Hint: Collectors.groupingBy()
@@ -84,6 +92,16 @@ public class Main {
 
         // TASK 7: Get unique languages, convert them to uppercase,
         // sort them alphabetically, and collect them into a list.
+
+        System.out.println("===== UNIQUE, UPPERCASE, SORTED =====");
+
+        List<String> results = languages.stream()
+                    .distinct()
+                    .map(String::toUpperCase)
+                    .sorted()
+                    .toList();
+
+        System.out.println(results);
 
     }
 }
