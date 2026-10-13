@@ -2,7 +2,6 @@
 package com.codewithkanye;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
@@ -32,5 +31,13 @@ class CalculatorTest {
     @Test
     void zeroShouldNotBePositive() {
         assertFalse(calculator.isPositive(0));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenDividingByZero() {
+        assertThrows(
+            ArithmeticException.class,
+            () -> calculator.divide(10, 0)
+        );
     }
 }
