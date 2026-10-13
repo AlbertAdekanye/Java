@@ -85,7 +85,7 @@ javac --version
 - [x] Use try-with-resources.
 - [x] Learn lambda expressions and method references.
 - [x] Process collections using the Stream API.
-- [ ] Write unit tests with JUnit.
+- [x] Write unit tests with JUnit.
 - [ ] Build an expense tracker with file persistence.
 
 ## Week 5 — Databases and Application Structure
