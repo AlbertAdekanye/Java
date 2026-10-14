@@ -19,12 +19,12 @@ public class Calculator {
         return number > 0;
     }
 
-    public int divide(int a, int b)  {
+    // public int divide(int a, int b)  {
 
-        if (b == 0) {
-            throw new ArithmeticException("cannot divide by zero");
-        }
+    //     if (b == 0) {
+    //         throw new ArithmeticException("cannot divide by zero");
+    //     }
 
-        return a / b;
-    }
+    //     return a / b;
+    // }
 }
