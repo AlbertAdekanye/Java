@@ -86,7 +86,7 @@ javac --version
 - [x] Learn lambda expressions and method references.
 - [x] Process collections using the Stream API.
 - [x] Write unit tests with JUnit.
-- [ ] Build an expense tracker with file persistence.
+- [x] Build an expense tracker with file persistence.
 
 ## Week 5 — Databases and Application Structure
 
