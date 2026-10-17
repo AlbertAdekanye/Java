@@ -41,7 +41,7 @@ public class ExpenseTest {
 
   @Test
   void shouldRejectZeroOrNegativeAmount() {
-    assertThrows(IllegalAccessException.class, 
+    assertThrows(IllegalArgumentException.class, 
       () -> new Expense(
         1, "Lunch", 0, "Food",
         LocalDate.now()
