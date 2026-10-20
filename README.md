@@ -90,8 +90,8 @@ javac --version
 
 ## Week 5 — Databases and Application Structure
 
-- [] Learn fundamental SQL commands.
-- [ ] Connect Java to SQLite using JDBC.
+- [x] Learn fundamental SQL commands.
+- [x] Connect Java to SQLite using JDBC.
 - [ ] Perform CRUD operations.
 - [ ] Use prepared statements.
 - [ ] Separate model, repository, service, and UI layers.
