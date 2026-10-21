@@ -22,4 +22,9 @@ INSERT INTO task (title, description)
 VALUES ('Learn Java', 'Continue Task Manager');
 
 -- 3. display all tasks
+
+UPDATE task
+SET completed = 0
+WHERE id = 60;
+
 SELECT * FROM task;

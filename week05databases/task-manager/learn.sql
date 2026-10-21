@@ -1,3 +1,3 @@
 SELECT *
 FROM task
-WHERE id = 4;
+WHERE completed = 0;
