@@ -15,5 +15,7 @@ public class Main {
             System.out.println("Database connection failed.");
             exception.printStackTrace();
         }
+
+        
     }
 }
