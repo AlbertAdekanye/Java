@@ -92,8 +92,8 @@ javac --version
 
 - [x] Learn fundamental SQL commands.
 - [x] Connect Java to SQLite using JDBC.
-- [ ] Perform CRUD operations.
-- [ ] Use prepared statements.
+- [x] Perform CRUD operations.
+- [x] Use prepared statements.
 - [ ] Separate model, repository, service, and UI layers.
 - [ ] Learn records, enums, `Optional`, and the date/time API.
 - [ ] Build a persistent task manager.
