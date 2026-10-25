@@ -1,7 +1,6 @@
 package com.codewithkanye;
 
 import java.sql.Connection;
-
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -48,5 +47,6 @@ public class Main {
     } catch (SQLException e) {
       System.out.println("DataBase error: " + e.getMessage());
     }
+    
   }
 }
