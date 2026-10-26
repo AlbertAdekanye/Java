@@ -95,7 +95,7 @@ javac --version
 - [x] Perform CRUD operations.
 - [x] Use prepared statements.
 - [x] Separate model, repository, service, and UI layers.
-- [ ] Learn records, enums, `Optional`, and the date/time API.
+- [x] Learn records, enums, `Optional`, and the date/time API.
 - [ ] Build a persistent task manager.
 
 ## Week 6 — Capstone and Consolidation
