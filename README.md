@@ -96,7 +96,7 @@ javac --version
 - [x] Use prepared statements.
 - [x] Separate model, repository, service, and UI layers.
 - [x] Learn records, enums, `Optional`, and the date/time API.
-- [ ] Build a persistent task manager.
+- [x] Build a persistent task manager.
 
 ## Week 6 — Capstone and Consolidation
 
