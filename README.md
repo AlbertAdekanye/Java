@@ -101,7 +101,7 @@ javac --version
 ## Week 6 — Capstone and Consolidation
 
 - [x] Select and define the final project.
-- [ ] Design the classes and application structure.
+- [x] Design the classes and application structure.
 - [ ] Implement the core features.
 - [ ] Add database or file persistence.
 - [ ] Test important behavior and edge cases.
