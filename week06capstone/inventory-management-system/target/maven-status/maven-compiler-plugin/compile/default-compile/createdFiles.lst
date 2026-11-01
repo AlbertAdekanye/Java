@@ -1,0 +1,9 @@
+com\codewithkanye\Main.class
+ConsoleUI.class
+Product.class
+StockMovement.class
+StockMovementRepository.class
+InventoryService.class
+Movement.class
+ProductRepository.class
+com\codewithkanye\Database.class
