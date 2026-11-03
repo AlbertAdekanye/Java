@@ -1,9 +1,9 @@
 com\codewithkanye\Main.class
-ConsoleUI.class
-Product.class
-StockMovement.class
-StockMovementRepository.class
-InventoryService.class
-Movement.class
-ProductRepository.class
-com\codewithkanye\Database.class
+com\codewithkanye\model\Product.class
+com\codewithkanye\model\StockMovement.class
+com\codewithkanye\ui\ConsoleUI.class
+com\codewithkanye\repository\StockMovementRepository.class
+com\codewithkanye\model\MovementType.class
+com\codewithkanye\service\InventoryService.class
+com\codewithkanye\config\Database.class
+com\codewithkanye\repository\ProductRepository.class
