@@ -102,8 +102,8 @@ javac --version
 
 - [x] Select and define the final project.
 - [x] Design the classes and application structure.
-- [ ] Implement the core features.
-- [ ] Add database or file persistence.
+- [x] Implement the core features.
+- [x] Add database or file persistence.
 - [ ] Test important behavior and edge cases.
 - [ ] Refactor and document the code.
 - [ ] Practice explaining the design and technical decisions.
