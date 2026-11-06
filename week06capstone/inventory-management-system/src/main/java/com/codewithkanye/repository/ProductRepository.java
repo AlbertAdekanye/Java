@@ -1,11 +1,16 @@
 
 package com.codewithkanye.repository;
 
+import java.math.BigDecimal;
+// import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import com.codewithkanye.config.Database;
 import com.codewithkanye.model.Product;
@@ -52,4 +57,105 @@ public class ProductRepository {
 
         throw new SQLException("Creating product failed. No ID returned.");
     }
+
+    // Retrieve all products
+    public List<Product> findAll() throws SQLException {
+
+        String sql = """
+                SELECT * FROM products
+                ORDER BY id ASC
+                """;
+        
+        List<Product> products = new ArrayList<>();
+
+        try (Connection connection = Database.connect();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery()) {
+
+                while (resultSet.next()) {
+            
+                    Product product = new Product(
+                        resultSet.getLong("id"),
+                        resultSet.getString("sku"),
+                        resultSet.getString("name"),
+                        new BigDecimal(resultSet.getString("price")),
+                        resultSet.getInt("quantity"),
+                        resultSet.getInt("low_stock_threshold")
+                    );
+            
+                        products.add(product);
+                    }
+            }
+
+        return products;
+    }
+
+    // Find a product by its ID
+    public Optional<Product> findById(long id) throws SQLException {
+
+        String sql = """
+                SELECT * FROM products
+                WHERE id = ?
+                """;
+
+        try (Connection connection = Database.connect();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setLong(1, id);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                if (resultSet.next()) {
+
+                    Product product = new Product(
+                            resultSet.getLong("id"),
+                            resultSet.getString("sku"),
+                            resultSet.getString("name"),
+                            new BigDecimal(resultSet.getString("price")),
+                            resultSet.getInt("quantity"),
+                            resultSet.getInt("low_stock_threshold")
+                    );
+
+                    return Optional.of(product);
+                }
+            }
+        }
+
+        return Optional.empty();
+    }
+
+    // Find a product by SKU
+    public Optional<Product> findBySku(String sku) throws SQLException {
+
+        String sql = """
+                SELECT * FROM products
+                WHERE sku = ?
+                """;
+
+        try (Connection connection = Database.connect();
+            PreparedStatement statement = connection.prepareStatement(sql)) {
+
+                statement.setString(1, sku);
+
+                try (ResultSet resultSet = statement.executeQuery()) {
+
+                    if (resultSet.next()) {
+
+                        Product product = new Product(
+                            resultSet.getLong("id"),
+                            resultSet.getString("sku"),
+                            resultSet.getString("name"),
+                            new BigDecimal(resultSet.getString("price")),
+                            resultSet.getInt("quantity"),
+                            resultSet.getInt("low_stock_threshold")
+                        );
+
+                        return Optional.of(product);
+                    }
+                }
+            }
+
+            return Optional.empty();
+    }
+
 }
