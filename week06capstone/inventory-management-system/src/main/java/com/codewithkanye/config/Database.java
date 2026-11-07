@@ -11,13 +11,21 @@ import java.sql.Statement;
 
 public class Database {
 
-    private static final String URL = "jdbc:sqlite:data/inventory.db";
+    // private static final String URL = "jdbc:sqlite:data/inventory.db";
+
+    private static final String DEFAULT_URL = "jdbc:sqlite:data/inventory.db";
+
+    private static String getUrl() {
+        return System.getProperty("inventory.db.url", DEFAULT_URL);
+    }
 
     // Open a connection to SQLite
     public static Connection connect() throws SQLException {
 
-        Connection connection = DriverManager.getConnection(URL);
+        // Connection connection = DriverManager.getConnection(URL);
 
+        Connection connection = DriverManager.getConnection(getUrl());
+        
         // Enable foreign-key enforcement for this connection
         try (Statement statement = connection.createStatement()) {
             statement.execute("PRAGMA foreign_keys = ON");
