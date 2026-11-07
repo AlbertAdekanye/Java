@@ -2,7 +2,6 @@
 package com.codewithkanye.repository;
 
 import java.math.BigDecimal;
-// import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -158,7 +157,8 @@ public class ProductRepository {
         return Optional.empty();
     }
 
-    // Update product details without changing its stock quantity
+ 
+    // Update product details without changing stock quantity
     public boolean updateProduct(Product product) throws SQLException {
 
         String sql = """
@@ -166,24 +166,26 @@ public class ProductRepository {
                 SET sku = ?,
                     name = ?,
                     price = ?,
-                    low_stock_threshold = >
+                    low_stock_threshold = ?
                 WHERE id = ?
                 """;
 
         try (Connection connection = Database.connect();
-            PreparedStatement statement = connection.prepareStatement(sql)) {
+             PreparedStatement statement =
+                     connection.prepareStatement(sql)) {
 
-                statement.setString(1, product.sku());
-                statement.setString(2, product.name());
-                statement.setString(3, product.price().toPlainString());
-                statement.setInt(4, product.lowStockThreshold());
-                statement.setLong(5, product.id());
+            statement.setString(1, product.sku());
+            statement.setString(2, product.name());
+            statement.setString(3, product.price().toPlainString());
+            statement.setInt(4, product.lowStockThreshold());
+            statement.setLong(5, product.id());
 
-                int rowsAffected = statement.executeUpdate();
+            int rowsAffected = statement.executeUpdate();
 
-                return rowsAffected > 0;
+            return rowsAffected > 0;
         }
     }
+
 
     // Delete a product by ID
     public boolean deleteProduct(long id) throws SQLException {
