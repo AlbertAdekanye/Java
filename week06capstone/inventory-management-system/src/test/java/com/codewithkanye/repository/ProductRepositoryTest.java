@@ -149,7 +149,7 @@ class ProductRepositoryTest {
         // Updating product details must not change stock quantity.
         assertEquals(10, actual.quantity());
     }
-
+    
     @Test
     void shouldDeleteProductWithoutMovementHistory()
             throws SQLException {
