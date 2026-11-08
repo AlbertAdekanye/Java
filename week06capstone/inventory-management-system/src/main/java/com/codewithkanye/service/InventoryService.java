@@ -4,13 +4,22 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.time.LocalDateTime;
 
 import com.codewithkanye.model.Product;
 import com.codewithkanye.repository.ProductRepository;
+import com.codewithkanye.config.Database;
+import com.codewithkanye.model.MovementType;
+import com.codewithkanye.model.StockMovement;
+import com.codewithkanye.repository.StockMovementRepository;
 
 public class InventoryService {
   
   private final ProductRepository productRepository;
+
+  private final StockMovementRepository stockMovementRepository =
+        new StockMovementRepository();
 
   public InventoryService() {
     this.productRepository = new ProductRepository();
@@ -165,5 +174,65 @@ public class InventoryService {
               .stream()
               .map(Product::getInventoryValue)
               .reduce(BigDecimal.ZERO, BigDecimal::add);
+  }
+  // Receive stock into inventory
+  public void receiveStock(long productId, int quantity) throws SQLException {
+  
+      // Validate quantity
+      if (quantity <= 0) {
+          throw new IllegalArgumentException(
+                  "Received quantity must be greater than zero."
+          );
+      }
+    
+      // Find the product
+      Product product = productRepository.findById(productId)
+              .orElseThrow(() ->
+                      new IllegalArgumentException("Product not found.")
+              );
+            
+      // Calculate new stock quantity safely
+      int newQuantity = Math.addExact(product.quantity(), quantity);
+            
+      // Start database transaction
+      try (Connection connection = Database.connect()) {
+      
+          connection.setAutoCommit(false);
+      
+          try {
+          
+              // Update product quantity
+              boolean updated = productRepository.updateQuantity(
+                      connection,
+                      productId,
+                      newQuantity
+              );
+            
+              if (!updated) {
+                  throw new SQLException("Failed to update product quantity.");
+              }
+            
+              // Create stock movement record
+              StockMovement movement = new StockMovement(
+                      0,
+                      productId,
+                      MovementType.IN,
+                      quantity,
+                      LocalDateTime.now()
+              );
+            
+              stockMovementRepository.addMovement(connection, movement);
+            
+              // Save both operations
+              connection.commit();
+            
+          } catch (Exception e) {
+          
+              // Undo changes if anything fails
+              connection.rollback();
+          
+              throw e;
+          }
+      }
   }
 }
