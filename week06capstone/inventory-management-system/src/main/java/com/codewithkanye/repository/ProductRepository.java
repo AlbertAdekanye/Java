@@ -10,6 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import com.codewithkanye.config.Database;
 import com.codewithkanye.model.Product;
@@ -156,7 +158,6 @@ public class ProductRepository {
 
         return Optional.empty();
     }
-
  
     // Update product details without changing stock quantity
     public boolean updateProduct(Product product) throws SQLException {
@@ -186,7 +187,6 @@ public class ProductRepository {
         }
     }
 
-
     // Delete a product by ID
     public boolean deleteProduct(long id) throws SQLException {
 
@@ -203,6 +203,28 @@ public class ProductRepository {
                 int rowsAffected = statement.executeUpdate();
 
                 return rowsAffected > 0;
+        }
+    }
+
+// Update product quantity using an existing database connection
+    public boolean updateQuantity(
+            Connection connection,
+            long productId,
+            int newQuantity
+    ) throws SQLException {
+
+        String sql = """
+                UPDATE products
+                SET quantity = ?
+                WHERE id = ?
+                """;
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, newQuantity);
+            statement.setLong(2, productId);
+
+            return statement.executeUpdate() > 0;
         }
     }
 }
