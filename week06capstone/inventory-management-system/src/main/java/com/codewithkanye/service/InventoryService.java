@@ -177,41 +177,41 @@ public class InventoryService {
   }
   // Receive stock into inventory
   public void receiveStock(long productId, int quantity) throws SQLException {
-  
+
       // Validate quantity
       if (quantity <= 0) {
           throw new IllegalArgumentException(
                   "Received quantity must be greater than zero."
           );
       }
-    
+
       // Find the product
       Product product = productRepository.findById(productId)
               .orElseThrow(() ->
                       new IllegalArgumentException("Product not found.")
               );
-            
+
       // Calculate new stock quantity safely
       int newQuantity = Math.addExact(product.quantity(), quantity);
-            
+
       // Start database transaction
       try (Connection connection = Database.connect()) {
-      
+
           connection.setAutoCommit(false);
-      
+
           try {
-          
+
               // Update product quantity
               boolean updated = productRepository.updateQuantity(
                       connection,
                       productId,
                       newQuantity
               );
-            
+
               if (!updated) {
                   throw new SQLException("Failed to update product quantity.");
               }
-            
+
               // Create stock movement record
               StockMovement movement = new StockMovement(
                       0,
@@ -220,19 +220,105 @@ public class InventoryService {
                       quantity,
                       LocalDateTime.now()
               );
-            
+
               stockMovementRepository.addMovement(connection, movement);
-            
+
               // Save both operations
               connection.commit();
-            
+
           } catch (Exception e) {
-          
+
               // Undo changes if anything fails
               connection.rollback();
-          
+
               throw e;
           }
       }
+  }
+
+  // Remove stock from inventory
+  public void removeStock(long productId, int quantity) throws SQLException {
+
+      // Validate quantity
+      if (quantity <= 0) {
+          throw new IllegalArgumentException(
+                  "Removal quantity must be greater than zero."
+          );
+      }
+
+      // Find the product
+      Product product = productRepository.findById(productId)
+              .orElseThrow(() ->
+                      new IllegalArgumentException("Product not found.")
+              );
+
+      // Check available stock
+      if (quantity > product.quantity()) {
+          throw new IllegalArgumentException(
+                  "Insufficient stock. Available quantity: "
+                          + product.quantity()
+          );
+      }
+
+      // Calculate remaining stock
+      int newQuantity = product.quantity() - quantity;
+
+      // Start database transaction
+      try (Connection connection = Database.connect()) {
+
+          connection.setAutoCommit(false);
+
+          try {
+
+              // Update product quantity
+              boolean updated = productRepository.updateQuantity(
+                      connection,
+                      productId,
+                      newQuantity
+              );
+
+              if (!updated) {
+                  throw new SQLException("Failed to update product quantity.");
+              }
+
+              // Create outgoing stock movement
+              StockMovement movement = new StockMovement(
+                      0,
+                      productId,
+                      MovementType.OUT,
+                      quantity,
+                      LocalDateTime.now()
+              );
+
+              stockMovementRepository.addMovement(connection, movement);
+
+              // Save both operations
+              connection.commit();
+
+          } catch (Exception e) {
+
+              // Undo changes if anything fails
+              connection.rollback();
+
+              throw e;
+          }
+      }
+  }
+
+  // Get stock movement history for a product
+  public List<StockMovement> getStockHistory(long productId)
+          throws SQLException {
+          
+      if (productId <= 0) {
+          throw new IllegalArgumentException("Product ID must be positive.");
+      }
+    
+      // Confirm product exists
+      productRepository.findById(productId)
+              .orElseThrow(() ->
+                      new IllegalArgumentException("Product not found.")
+              );
+            
+      return stockMovementRepository.findByProductId(productId);
   }
 }
