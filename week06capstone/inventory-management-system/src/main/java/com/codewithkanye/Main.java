@@ -1,22 +1,26 @@
-
 package com.codewithkanye;
-
-import com.codewithkanye.config.Database;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
+import com.codewithkanye.config.Database;
+import com.codewithkanye.ui.ConsoleUI;
 
 public class Main {
 
     public static void main(String[] args) {
 
         try {
+
             Database.initialize();
 
-            System.out.println("Inventory Management System is ready.");
+            ConsoleUI consoleUI = new ConsoleUI();
+
+            consoleUI.start();
 
         } catch (IOException | SQLException e) {
-            System.out.println("Database initialization failed.");
+
+            System.out.println("Application startup failed.");
             e.printStackTrace();
         }
     }
