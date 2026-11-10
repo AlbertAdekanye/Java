@@ -104,9 +104,9 @@ javac --version
 - [x] Design the classes and application structure.
 - [x] Implement the core features.
 - [x] Add database or file persistence.
-- [ ] Test important behavior and edge cases.
-- [ ] Refactor and document the code.
-- [ ] Practice explaining the design and technical decisions.
+- [x] Test important behavior and edge cases.
+- [x] Refactor and document the code.
+- [x] Practice explaining the design and technical decisions.
 
 Possible capstone projects:
 
