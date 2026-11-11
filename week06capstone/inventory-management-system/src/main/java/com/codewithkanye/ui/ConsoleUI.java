@@ -3,6 +3,7 @@ package com.codewithkanye.ui;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import com.codewithkanye.model.Product;
@@ -37,11 +38,24 @@ public class ConsoleUI {
                     case 1 -> addProduct();
 
                     case 2 -> viewAllProducts();
+                    
+                    case 3 -> searchProduct();
+
+                    case 4 -> updateProduct();
+
+                    case 5 -> deleteProduct();
+
+                    case 6 -> receiveStock();
+
+                    case 7 -> removeStock();
 
                     case 0 -> {
                         running = false;
                         System.out.println("Thank you for using the system!");
                     }
+
+                    case 8, 9 -> 
+                        System.out.println("This feature will be implemented next.");
 
                     default -> System.out.println(
                             "Invalid option. Please try again."
@@ -156,4 +170,207 @@ public class ConsoleUI {
 
         System.out.println("------------------------------------");
     }
+
+    // searchProducts
+    private void searchProduct() throws SQLException {
+
+        System.out.println("\n--- SEARCH PRODUCT ---");
+        System.out.println("1. Search by Product ID");
+        System.out.println("2. Search by Product SKU");
+        System.out.println("0. Back to Main Menu");
+
+        int choice = readInt("Choose search method: ");
+
+        Optional<Product> result = Optional.empty();
+        switch (choice) {
+
+            case 1 -> {
+                long id = readInt("Enter product ID: ");
+                result = inventoryService.getProductById(id);
+            }
+
+            case 2 -> {
+                System.out.println("Enter product SKU: ");
+                String sku = scanner.nextLine().trim();
+
+                result = inventoryService.getProductBySku(sku);
+            }
+
+            case 0 -> {
+                return;
+            }
+
+            default -> {
+                System.out.println("Invalid search option.");
+            }
+        }
+
+        if (result.isPresent()) {
+            System.out.println("\nProduct found!");
+            displayProduct(result.get());
+        } else {
+            System.out.println("\nNo product found.");
+        }
+    }
+
+    private void displayProduct(Product product) {
+
+        System.out.println("------------------------------------");
+        System.out.println("Product ID: " + product.id());
+        System.out.println("SKU: " + product.sku());
+        System.out.println("Name: " + product.name());
+        System.out.println("Price: " + product.price());
+        System.out.println("Quantity: " + product.quantity());
+        System.out.println("Low-stock threshold: " + product.lowStockThreshold());
+        System.out.println("Inventory value: " + product.getInventoryValue());
+        System.out.println("----------------------------------------");
+    }
+
+    // updateProduct
+    private void updateProduct() throws SQLException {
+
+        System.out.println("\n--- UPDATE PRODUCT ---");
+
+        long id = readInt("Enter product ID to update: ");
+
+        // Find the existing product
+        Optional<Product> result = inventoryService.getProductById(id);
+
+        if (result.isEmpty()) {
+            System.out.println("Product not found.");
+            return;
+        }
+
+        Product existingProduct = result.get();
+
+        // Display current product details
+        System.out.println("\nCurrent product details:");
+        displayProduct(existingProduct);
+
+        System.out.println("\nEnter new details.");
+        System.out.println("Press Enter to keep the current value.");
+
+        // Update SKU
+        System.out.println("New SKU [" + existingProduct.sku() + "]: ");
+        String sku = scanner.nextLine().trim();
+
+        if (sku.isEmpty()) {
+            sku = existingProduct.sku();
+        }
+
+        // Update name
+        System.out.println("New name [" + existingProduct.name() + "]: " );
+        String name = scanner.nextLine().trim();
+
+        if (name.isEmpty()) {
+            name = existingProduct.name();
+        }
+
+        // Update price
+        System.out.println("New price [" + existingProduct.price() + "]: ");
+        String priceInput = scanner.nextLine().trim();
+
+        BigDecimal price = priceInput.isEmpty()
+                ? existingProduct.price()
+                : new BigDecimal(priceInput);
+        
+        // Update low-stock threshold
+        System.out.println("New low-stock threshold [" 
+                    + existingProduct.lowStockThreshold() + "]: ");
+        
+        String thresholdInput = scanner.nextLine().trim();
+
+        int threshold = thresholdInput.isEmpty()
+                    ? existingProduct.lowStockThreshold()
+                    : Integer.parseInt(thresholdInput);
+
+        // Create updated product
+        Product updatedProduct = new Product(
+            existingProduct.id(),
+            sku,
+            name,
+            price,
+            existingProduct.quantity(),
+            threshold
+        );
+
+        // Save changes
+        boolean updated = inventoryService.updateProduct(updatedProduct);
+
+        if (updated) {
+            System.out.println("\nProduct updated successfully!");
+            displayProduct(updatedProduct);
+        } else {
+            System.out.println("\nProduct update failed.");
+        }
+    }
+
+    // Delete product
+    private void deleteProduct() throws SQLException {
+
+        System.out.println("\n---- DELETE PRODUCT ----");
+
+        long id = readInt("Enter product ID to delete: ");
+
+        Optional<Product> result = inventoryService.getProductById(id);
+
+        if (result.isEmpty()) {
+            System.out.println("Product not found.");
+            return;
+        }
+
+        Product product = result.get();
+
+        System.out.println("\nProduct selected for deletion: ");
+        displayProduct(product);
+
+        System.out.println("Are sure you want to delete this product? (yes/no): ");
+
+        String confirmation = scanner.nextLine().trim();
+
+        if (!confirmation.equalsIgnoreCase("yes")) {
+            System.out.println("Product deletion cancelled.");
+            return;
+        }
+
+        boolean deleted = inventoryService.deleteProduct(id);
+
+        if (deleted) {
+            System.out.println("Product deleted successfully!");
+        } else {
+            System.out.println("Product deletion failed.");
+        }
+    }
+
+    // Receive stock
+    private void receiveStock() throws SQLException {
+        
+        System.out.println("\n--- RECEIVE STOCK ---");
+
+        long productId = readInt("Enter product ID: ");
+
+        Optional<Product> result = inventoryService.getProductById(productId);
+
+        if (result.isEmpty()) {
+            System.out.println("Product not found.");
+        }
+
+        Product product = result.get();
+
+        System.out.println("\nSelected product: ");
+        displayProduct(product);
+
+        int quantity = readInt("Enter quantity received: ");
+
+        inventoryService.receiveStock(productId, quantity);
+
+        System.out.println("\nStock received successfully!");
+
+        // Retrieve the updated product from the database
+        Product updateProduct = inventoryService.getProductById(productId).orElseThrow();
+
+        displayProduct(updateProduct);
+    }
+
+    
 }
