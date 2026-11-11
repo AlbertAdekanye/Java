@@ -163,7 +163,10 @@ After completing this roadmap, I plan to learn:
 - REST API design
 - Spring Boot
 - Authentication and backend security
+- Redis and caching
+- Apache Kafka and event-driven architecture
 - Docker and cloud deployment
+- Logging, monitoring and observability
 
 ## Progress
 
