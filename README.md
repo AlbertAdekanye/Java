@@ -25,25 +25,27 @@ By the end of the six weeks, I aim to:
 - **Operating system:** Windows 11
 - **Editor:** Visual Studio Code
 - **JDK:** Microsoft OpenJDK 25 LTS
-- **Java extension:** Extension Pack for Java by Microsoft
+- **Build tool:** Apache Maven
+- **Java extension:** Extension Pack for Java
 
 Verify the installation:
 
 ```powershell
 java --version
 javac --version
+mvn --version
 ```
 
 ## Six-Week Roadmap
 
 | Week | Focus | Main project |
-| --- | --- | --- |
+|---|---|---|
 | 1 | Java basics | Console calculator |
 | 2 | Object-oriented programming | Library system |
 | 3 | Collections and exceptions | Contact manager |
 | 4 | Files, streams, and testing | Expense tracker |
 | 5 | Databases and modern Java | SQLite task manager |
-| 6 | Consolidation and interview practice | Polished capstone application |
+| 6 | Consolidation and interview practice | Inventory Management System |
 
 ## Week 1 — Core Foundations
 
@@ -103,17 +105,95 @@ javac --version
 - [x] Select and define the final project.
 - [x] Design the classes and application structure.
 - [x] Implement the core features.
-- [x] Add database or file persistence.
+- [x] Add SQLite database persistence.
+- [x] Implement transactional stock management.
+- [x] Write automated tests with JUnit 5.
 - [x] Test important behavior and edge cases.
 - [x] Refactor and document the code.
-- [x] Practice explaining the design and technical decisions.
+- [x] Practice explaining design and technical decisions.
 
-Possible capstone projects:
+### Week 6 Capstone: Inventory Management System
 
-- Quiz system
-- Inventory manager
-- Booking application
-- Personal finance tracker
+A Java console-based inventory management application built to demonstrate practical backend programming, database integration, application architecture, and automated testing.
+
+**Technologies Used**
+
+- Java 25
+- Apache Maven
+- SQLite
+- JDBC
+- JUnit 5
+- SQL
+
+**Features**
+
+1. Add products with unique SKUs.
+2. View all products.
+3. Search products by ID or SKU.
+4. Update product details.
+5. Delete products while preserving stock movement history.
+6. Receive stock.
+7. Remove stock.
+8. View low-stock products.
+9. Calculate total inventory value.
+10. View stock movement history.
+
+**Architecture**
+
+The application follows a layered architecture:
+
+- **Model:** Represents products and stock movements.
+- **Repository:** Handles database operations.
+- **Service:** Implements business rules and inventory operations.
+- **UI:** Provides the console interface.
+- **Config:** Handles SQLite database initialization and connections.
+
+**Database Design**
+
+The application uses two main database tables:
+
+- `products` — Stores product information, prices, quantities, and low-stock thresholds.
+- `stock_movements` — Records stock received and stock removed, including timestamps.
+
+Stock quantity updates and their corresponding movement records are handled within database transactions to maintain data consistency.
+
+**Testing**
+
+Automated tests cover repository operations and inventory service behavior.
+
+Latest test results:
+
+| Test class | Tests |
+|---|---:|
+| ProductRepositoryTest | 8 |
+| InventoryServiceTest | 5 |
+| **Total** | **13** |
+
+- **Passed:** 13
+- **Failures:** 0
+- **Errors:** 0
+- **Skipped:** 0
+- **Build status:** BUILD SUCCESS
+
+**Running the Capstone**
+
+Navigate to the capstone project directory:
+
+```powershell
+cd week-06-capstone/inventory-management-system
+```
+
+Run the tests:
+
+```powershell
+mvn clean test
+```
+
+Run the application:
+
+```powershell
+mvn exec:java "-Dexec.mainClass=com.codewithkanye.Main"
+```
 
 ## Daily Routine
 
@@ -134,10 +214,16 @@ java-learning/
 ├── week-04-files-streams-testing/
 ├── week-05-databases/
 ├── week-06-capstone/
+│   └── inventory-management-system/
+│       ├── src/
+│       │   ├── main/
+│       │   └── test/
+│       ├── pom.xml
+│       └── README.md
 └── README.md
 ```
 
-## Running a Java Program
+## Running a Basic Java Program
 
 Compile a program:
 
@@ -157,25 +243,30 @@ The filename and public class name must match exactly. For example, `public clas
 
 After completing this roadmap, I plan to learn:
 
-- HTTP requests and responses
-- JSON processing
-- Java's built-in `HttpClient`
-- REST API design
-- Spring Boot
-- Authentication and backend security
-- Redis and caching
-- Apache Kafka and event-driven architecture
-- Docker and cloud deployment
-- Logging, monitoring and observability
+- HTTP requests and responses.
+- JSON processing.
+- Java's built-in `HttpClient`.
+- REST API design.
+- Spring Boot.
+- Authentication and backend security.
+- Redis and caching.
+- Apache Kafka and event-driven architecture.
+- Docker and cloud deployment.
+- Logging, monitoring, and observability.
 
 ## Progress
 
-**Current stage:** Week 1 — Core Foundations
+**Current stage:** Week 6 — Completed
+
+**Milestone:** Built and tested a database-backed Inventory Management System using Java 25, SQLite, Maven, JDBC, and JUnit 5.
+
+**Next learning phase:** HTTP, REST APIs, and Spring Boot.
 
 ## Author
 
-**Albert Adekanye**  
-Frontend developer, backend learner, and tech educator.
+**Albert Adekanye**
+
+Software developer, backend engineering enthusiast, and tech educator.
 
 ## License
 

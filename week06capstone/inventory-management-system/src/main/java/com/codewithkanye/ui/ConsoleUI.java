@@ -1,5 +1,6 @@
 package com.codewithkanye.ui;
 
+import com.codewithkanye.model.StockMovement;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
@@ -52,6 +53,8 @@ public class ConsoleUI {
                     case 8 -> viewLowStockProducts();
 
                     case 9 -> viewInventoryValue();
+
+                    case 10 -> viewStockMovementHistory();
 
                     case 0 -> {
                         running = false;
@@ -441,4 +444,61 @@ public class ConsoleUI {
 
         System.out.println("Total Inventory Value: " + totalValue);
     }
+
+
+    private void viewStockMovementHistory() throws SQLException {
+
+        System.out.println("\n--- STOCK MOVEMENT HISTORY ---");
+
+        long productId = readInt("Enter product ID: ");
+
+        Optional<Product> productResult =
+                inventoryService.getProductById(productId);
+
+        if (productResult.isEmpty()) {
+            System.out.println("Product not found. Please check the product ID.");
+            return;
+        }
+
+        Product product = productResult.get();
+
+        System.out.println("\nStock movement history for: " + product.name());
+
+        List<StockMovement> movements = inventoryService.getStockHistory(productId);
+
+        if (movements.isEmpty()) {
+            System.out.println("No stock movements found for this product.");
+            return;
+        }
+
+        for (StockMovement movement : movements) {
+            System.out.println("------------------------------------");
+            System.out.println("Movement ID: " + movement.id());
+            System.out.println("Product ID: " + movement.productId());
+            System.out.println("Movement Type: " + movement.type());
+            System.out.println("Quantity: " + movement.quantity());
+            System.out.println("Date: " + movement.createdAt());
+        }
+
+        System.out.println("------------------------------------");
+        System.out.println("Total movements: " + movements.size());
+    }
+
 }
+
+
+
+// ## What Comes Next?
+
+// After completing this roadmap, I plan to learn:
+
+// - HTTP requests and responses
+// - JSON processing
+// - Java's built-in `HttpClient`
+// - REST API design
+// - Spring Boot
+// - Authentication and backend security
+// - Redis and caching
+// - Apache Kafka and event-driven architecture
+// - Docker and cloud deployment
+// - Logging, monitoring and observability
