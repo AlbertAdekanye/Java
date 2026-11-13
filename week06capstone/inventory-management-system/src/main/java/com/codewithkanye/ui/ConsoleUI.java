@@ -49,12 +49,16 @@ public class ConsoleUI {
 
                     case 7 -> removeStock();
 
+                    case 8 -> viewLowStockProducts();
+
+                    case 9 -> viewInventoryValue();
+
                     case 0 -> {
                         running = false;
                         System.out.println("Thank you for using the system!");
                     }
 
-                    case 8, 9 -> 
+                    case 19 -> 
                         System.out.println("This feature will be implemented next.");
 
                     default -> System.out.println(
@@ -372,5 +376,69 @@ public class ConsoleUI {
         displayProduct(updateProduct);
     }
 
-    
+    // Remove stock
+ 
+    private void removeStock() throws SQLException {
+
+        System.out.println("\n--- REMOVE STOCK ---");
+
+        long productId = readInt("Enter product ID: ");
+
+        Optional<Product> result =
+                inventoryService.getProductById(productId);
+
+        if (result.isEmpty()) {
+            System.out.println("Product not found. Please check the product ID.");
+            return;
+        }
+
+        Product product = result.get();
+
+        System.out.println("\nSelected product:");
+        displayProduct(product);
+
+        int quantity = readInt("Enter quantity to remove: ");
+
+        inventoryService.removeStock(productId, quantity);
+
+        System.out.println("\nStock removed successfully!");
+
+        Optional<Product> updatedResult =
+                inventoryService.getProductById(productId);
+
+        if (updatedResult.isPresent()) {
+            displayProduct(updatedResult.get());
+        }
+    }
+
+    // view low stock products
+    private void viewLowStockProducts() throws SQLException {
+
+        System.out.println("\n--- LOW-STOCK PRODUCTS ---");
+
+        List<Product> products = inventoryService.getLowStockProducts();
+
+        if (products.isEmpty()) {
+            System.out.println("NO low-stock products found.");
+            return;
+        }
+
+        System.out.println("Products that need restocking.");
+
+        for (Product product : products) {
+            displayProduct(product);
+        }
+
+        System.out.println("Total low-stock products: " + products.size());
+    }
+
+    public void viewInventoryValue() throws SQLException {
+
+        System.out.println("\n--- INVENTORY VALUE ---");
+
+        BigDecimal totalValue =
+                inventoryService.getTotalInventoryValue();
+
+        System.out.println("Total Inventory Value: " + totalValue);
+    }
 }
