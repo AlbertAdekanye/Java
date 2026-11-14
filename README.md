@@ -221,6 +221,18 @@ java-learning/
 │       ├── pom.xml
 │       └── README.md
 └── README.md
+
+
+inventory-management-system/
+├── screenshots/
+│   ├── main-menu.png
+│   ├── product-management.png
+│   ├── stock-management.png
+│   ├── inventory-reports.png
+│   └── test-results.png
+├── src/
+├── README.md
+└── pom.xml
 ```
 
 ## Running a Basic Java Program
