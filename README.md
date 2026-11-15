@@ -234,6 +234,12 @@ inventory-management-system/
 ├── README.md
 └── pom.xml
 ```
+<img width="1478" height="944" alt="Automated Tests" src="https://github.com/user-attachments/assets/25151940-1881-4dfa-b0dc-721a768beb61" />
+<img width="634" height="438" alt="Product Management" src="https://github.com/user-attachments/assets/8aba3a23-6a52-4592-8b4b-288b386ba022" />
+<img width="731" height="370" alt="Main Menu" src="https://github.com/user-attachments/assets/b3d4fd59-9518-4534-8ab7-7d91e90e3dd2" />
+<img width="302" height="108" alt="Inventory Reports" src="https://github.com/user-attachments/assets/45fd2e75-db9c-43f5-b890-314dbaf3b036" />
+<img width="374" height="449" alt="Screenshot 2026-11-13 233248" src="https://github.com/user-attachments/assets/eb68ef1a-ec77-4261-9e90-a639e1c39ef5" />
+
 
 ## Running a Basic Java Program
 
